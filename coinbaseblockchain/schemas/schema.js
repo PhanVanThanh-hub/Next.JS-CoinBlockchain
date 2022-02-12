@@ -18,8 +18,13 @@ export default createSchema({
       type:'document',
       fields:[
         {
+          title:'Name',
+          name:'name',
+          type:'string',
+        },
+        {
           title:'Symbol',
-          name:'Symbol',
+          name:'symbol',
           type:'string',
         },
         {
@@ -36,7 +41,7 @@ export default createSchema({
         },
         {
           title:'Logo',
-          name:'Logo',
+          name:'logo',
           type:'image',
           
         },
