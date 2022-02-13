@@ -2,8 +2,10 @@ import React,{useState} from 'react';
 import styled from 'styled-components';
 import Transfer from './Transfer';
 import CoinSelector from './CoinSelector';
-const TransferModel =(props)=>{
-    const {sanityTokens,thirdWebTokens,walletAddress} = props
+import { TailSpin } from  'react-loader-spinner';
+import Receive from './Receive';
+const TransferModel =({sanityTokens,thirdWebTokens,walletAddress})=>{
+    
     const [action , setAction] = useState('send')
     const [selectedToken , setSelectedToken] = useState(sanityTokens[0])
     const selectedStyle={
@@ -24,7 +26,13 @@ const TransferModel =(props)=>{
                             walletAddress = {walletAddress}    
                         />
             case 'receive':
-                return <h2>Receive</h2>
+                return (
+                    <Receive
+                        setAction = {setAction}
+                        selectedToken = {selectedToken}
+                        walletAddress ={walletAddress}
+                    />
+                )
             case 'select':
                 return(
                     <CoinSelector
@@ -35,6 +43,43 @@ const TransferModel =(props)=>{
                         thirdWebTokens = {thirdWebTokens}
                         walletAddress ={walletAddress}
                     />
+                )
+            case 'transferring':
+                return(
+                    <div style={{
+                        width:'100%',
+                        height:"100%",
+                        display:"flex",
+                        flexDirection:'column',
+                        justifyContent:'center',
+                        alignItems:'center',
+                        fontSize:"1.5rem",
+                    }}>
+                        <h2>Transferring...</h2>
+                        <TailSpin
+                            height="100"
+                            width="100"
+                            color='#3773f5'
+                            ariaLabel='loading'
+                        />
+                    </div>
+                )
+            case 'transferred':
+                return (
+                    <div
+                        style={{
+                            width:"100%",
+                            height:"100%",
+                            display:"flex",
+                            justifyContent:"cnenter",
+                            alignItems:'center',
+                            fontSize:"2rem",
+                            fontWeight:"600",
+                            color:"#27ad75"
+                        }}
+                    >
+                        Transfer complete
+                    </div>
                 )
             default:
                 return <Transfer/>
