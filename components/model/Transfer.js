@@ -67,7 +67,7 @@ const Transfer =(props)=>{
                         onChange={e =>setAmount(e.target.value)}
                     
                     />
-                    <span>ETH</span>
+                    <span>{selectedToken.symbol}</span>
                 </FlexInputContainer>
                 <Waring style={{color: amount && '#0a0b0d'}}>
                     amount is a required field
@@ -88,7 +88,7 @@ const Transfer =(props)=>{
                 <Divider/>
                 <Row>
                     <FieldName>Pay with</FieldName>
-                    <CoinSelectList>
+                    <CoinSelectList onClick ={()=>setAction('select')}>
                         <Icon>
                             <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fvtv1.mediacdn.vn%2Fthumb_w%2F650%2F2019%2F7%2F16%2Flapremiereofspider-man-homecoming-2-15632612816762076172665.jpg&imgrefurl=https%3A%2F%2Fvtv.vn%2Fvan-hoa-giai-tri%2Frobert-downey-jr-muon-tach-minh-khoi-vai-dien-iron-man-20190716141625125.htm&tbnid=Vjp2mqtjhkAMgM&vet=12ahUKEwjRge34gfr1AhUpXmwGHQuxABUQMygCegUIARC7AQ..i&docid=MMihHlMO5BEnyM&w=650&h=433&q=robert%20downey%20jr&ved=2ahUKEwjRge34gfr1AhUpXmwGHQuxABUQMygCegUIARC7AQ" 
                             alt=""/>
